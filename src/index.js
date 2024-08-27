@@ -1,23 +1,14 @@
 import { createServer } from "node:http";
-import { createSchema, createYoga } from "graphql-yoga";
+import { createYoga } from "graphql-yoga";
+import { schema } from "./schema/schema.js";
 
 const yoga = createYoga({
-  schema: createSchema({
-    typeDefs: /* GraphQL */ `
-      type Query {
-        hello: String
-      }
-    `,
-    resolvers: {
-      Query: {
-        hello: () => "Hello d from Yoga!",
-      },
-    },
-  }),
+  schema,
 });
 
 const server = createServer(yoga);
 
+// Démarrer le serveur
 server.listen(4000, () => {
-  console.info("Server is running on http://localhost:4000/graphql");
+  console.log("Server is running on http://localhost:4000");
 });

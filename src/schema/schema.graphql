@@ -1,0 +1,15 @@
+type Query {
+  hello: String
+}
+enum todoStatusEnum {
+  WAITING
+  INPROGRESS
+  CANCELED
+  DONE
+}
+type todo {
+  id: ID!
+  name: String!
+  content: String!
+  status: todoStatusEnum!
+}
