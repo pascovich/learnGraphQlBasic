@@ -1,15 +1,28 @@
 import { createSchema } from "graphql-yoga";
+import { Query } from "../resolvers/Query.mjs";
 
 export const schema = createSchema({
   typeDefs: /* GraphQL */ `
+    enum todoStatusEnum {
+      WAITING
+      INPROGRESS
+      CANCELED
+      DONE
+    }
     type Query {
-      hello: String
+      hello(name: String): String!
+      getTodos: [todo]!
+      getTodoById(id: Int): todo!
+    }
+    type todo {
+      id: ID!
+      name: String
+      content: String!
+      status: todoStatusEnum!
     }
   `,
   resolvers: {
-    Query: {
-      hello: () => `Hello from vich!`,
-    },
+    Query,
   },
 });
 // 0975925535
