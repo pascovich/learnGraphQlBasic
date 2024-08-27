@@ -11,7 +11,7 @@ export const Query = {
     return db.todos;
   },
   getTodoById: (parent, { id }, context, info) => {
-    const todo = db.todos.map((todo) => todo.id === id);
+    const todo = db.todos.find((todo) => todo.id === id);
     if (!todo) {
       throw new Error(`le todo de id: ${id} n'existe pas`);
     }
