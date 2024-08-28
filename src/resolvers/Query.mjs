@@ -16,7 +16,6 @@ export const Query = {
       throw new Error(`le todo de id: ${id} n'existe pas`);
     }
     return todo;
-
     // return db.todos.find((todo) => todo.id === id);
     // console.log(id);
   },

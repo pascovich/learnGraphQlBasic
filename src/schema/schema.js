@@ -19,6 +19,13 @@ export const schema = createSchema({
       name: String
       content: String!
       status: todoStatusEnum!
+      user: user!
+    }
+    type user {
+      id: ID!
+      name: String!
+      email: String!
+      todos: [todo]
     }
   `,
   resolvers: {
